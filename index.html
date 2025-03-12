@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes em Destaque</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>🎬 CINETEXX</h1>
+        <input type="text" id="search" placeholder="Pesquisar filmes...">
+    </header>
+
+    <div class="content">
+        <aside class="sidebar">
+            <h3>Gêneros</h3>
+            <ul>
+                <li onclick="filterByGenre('acao')">Ação</li>
+                <li onclick="filterByGenre('drama')">Drama</li>
+                <li onclick="filterByGenre('ficcao')">Ficção Científica</li>
+                <li onclick="filterByGenre('aventura')">Aventura</li>
+            </ul>
+        </aside>
+
+        <div class="movies-container" id="movies-container">
+            <div class="movie" data-genre="acao">
+                <iframe src="https://www.youtube.com/embed/Mn9tvwIMD6U" allowfullscreen></iframe>
+                <h2>Capitão América: Admirável Mundo</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+
+            <div class="movie" data-genre="drama">
+                <iframe src="https://www.youtube.com/embed/smTK_AeAPHs" allowfullscreen></iframe>
+                <h2>Oppenheimer</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+
+            <div class="movie" data-genre="acao">
+                <iframe src="https://www.youtube.com/embed/TcMBFSGVi1c" allowfullscreen></iframe>
+                <h2>Vingadores: Ultimato</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+
+            <div class="movie" data-genre="ficcao">
+                <iframe src="https://www.youtube.com/embed/8g18jFHCLXk" allowfullscreen></iframe>
+                <h2>Interestelar</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+
+            <div class="movie" data-genre="acao">
+                <iframe src="https://www.youtube.com/embed/6ZfuNTqbHE8" allowfullscreen></iframe>
+                <h2>Vingadores: Guerra Infinita</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+
+            <div class="movie" data-genre="aventura">
+                <iframe src="https://www.youtube.com/embed/d96cjJhvlMA" allowfullscreen></iframe>
+                <h2>Jumanji: Próxima Fase</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+
+            <div class="movie" data-genre="ficcao">
+                <iframe src="https://www.youtube.com/embed/bi07GmS4gRc" allowfullscreen></iframe>
+                <h2>Duna</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+
+            <div class="movie" data-genre="acao">
+                <iframe src="https://www.youtube.com/embed/k76v9hx3kno" allowfullscreen></iframe>
+                <h2>Homem-Aranha: Sem Volta Para Casa</h2>
+                <button class="favorite-btn">❤️ Favoritar</button>
+                <button class="unfavorite-btn">💔 Desfavoritar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const moviesContainer = document.getElementById('movies-container');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            const movies = document.querySelectorAll('.movie');
+
+            movies.forEach(movie => {
+                const title = movie.querySelector('h2').innerText.toLowerCase();
+                movie.style.display = title.includes(query) ? 'block' : 'none';
+            });
+        });
+
+        function filterByGenre(genre) {
+            const movies = document.querySelectorAll('.movie');
+            movies.forEach(movie => {
+                const movieGenre = movie.getAttribute('data-genre');
+                movie.style.display = movieGenre === genre ? 'block' : 'none';
+            });
+        }
+    </script>
+
+</body>
+</html>
